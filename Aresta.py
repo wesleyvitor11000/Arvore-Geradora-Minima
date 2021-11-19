@@ -3,6 +3,3 @@ class Aresta:
         self.X = X
         self.Y = Y
         self.peso = peso
-    
-    def _repr_(self):
-        return repr(self.peso, self.X, self.Y)

@@ -24,7 +24,6 @@ def getMin():
                         min = aresta.peso
                         menor_aresta = aresta
                         novo_vertice = aresta.X
-
     return menor_aresta, novo_vertice
 
 
@@ -35,10 +34,9 @@ def haveCycle(aresta : Aresta):
         return False
 
 def Prim(arestas, vertices):
-    arestas_grafo = arestas
-    vertices_grafo = vertices
-    
-    vertice = randint(1, 3)
+    arestas_grafo.extend(arestas)
+    vertices_grafo.extend(vertices)
+    vertice = randint(1, vertices_grafo.__len__())
     vertices_arvore_minima.append(vertice)
     vertices_grafo.remove(vertice)
 
@@ -50,3 +48,4 @@ def Prim(arestas, vertices):
         arvore_minima.append(aresta)
         arestas_grafo.remove(aresta)
 
+    return arvore_minima
