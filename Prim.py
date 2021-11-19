@@ -5,7 +5,6 @@ class Aresta:
         self.X = X
         self.Y = Y
         self.peso = peso
-
 vertices_grafo = [1, 2, 3, 4, 5, 6]
 arestas_grafo = [Aresta(1,2,1), Aresta(1,3,2), Aresta(2,3,3), Aresta(3,4,4),Aresta(3,6,6), Aresta(3,5,5), Aresta(4,5,7), Aresta(6,5,8)]
 arvore_minima = list()
@@ -52,6 +51,6 @@ def Prim():
         arvore_minima.append(aresta)
         arestas_grafo.remove(aresta)
 
-# Prim()
-# for x in arvore_minima:
-#     print(x.__dict__)
+Prim()
+for x in arvore_minima:
+    print(x.__dict__)
