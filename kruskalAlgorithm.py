@@ -3,13 +3,12 @@ from operator import attrgetter
 
 def kruskalAlgorithm (grafo: list()):
 
+    grafo = sorted(grafo, key=attrgetter('peso'))
+
     subgrafos = list()
     agm = list()
-
-
+    
     for aresta in grafo:
-
-        grafo = sorted(grafo, key=attrgetter('peso'))
         
         if(not subgrafos):
             subgrafos.append([aresta.X, aresta.Y])
