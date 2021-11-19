@@ -1,8 +1,10 @@
-from Aresta import Aresta;
+from Aresta import Aresta
+from Prim import Prim;
 from kruskalAlgorithm import kruskalAlgorithm;
 
 def importarArestas(nome):
-    lista = []
+    arestas = []
+    vertices = []
     with open(nome) as arquivo:
         while True:
             line = arquivo.readline()
@@ -14,17 +16,26 @@ def importarArestas(nome):
                 x = int(x)
                 y = int(y)
                 peso = peso.replace('\n', '')
-                lista.append(Aresta(x, y, peso))
+                peso = int(peso)
+                arestas.append(Aresta(x, y, peso))
+                if x not in vertices:
+                    vertices.append(x)
+                if y not in vertices:
+                    vertices.append(y)
 
     #print('\n'.join(str(aresta._dict_) for aresta in lista))  
-    return lista          
+    return arestas, vertices         
 
 
 
-nome = input()
-grafo = importarArestas(nome)
+nome = input('Digite o nome do arquivo: ')
 
-agm = kruskalAlgorithm(grafo)
+arestas, vertices = importarArestas(nome)
 
-for i in agm:
-    print(i.__dict__)
+kruskalAGM = kruskalAlgorithm(arestas)
+primAGM = Prim(arestas, vertices)
+
+print('Kruskal:\n')
+print('\n'.join(str(aresta.__dict__) for aresta in kruskalAGM))
+print('\nPrim:\n')
+print('\n'.join(str(aresta.__dict__) for aresta in primAGM))

@@ -1,14 +1,10 @@
 from random import randint
+from Aresta import Aresta
 
-class Aresta:
-    def __init__(self, X : int, Y : int, peso : int):
-        self.X = X
-        self.Y = Y
-        self.peso = peso
-vertices_grafo = [1, 2, 3, 4, 5, 6]
-arestas_grafo = [Aresta(1,2,1), Aresta(1,3,2), Aresta(2,3,3), Aresta(3,4,4),Aresta(3,6,6), Aresta(3,5,5), Aresta(4,5,7), Aresta(6,5,8)]
-arvore_minima = list()
-vertices_arvore_minima = list()
+vertices_grafo = []
+arestas_grafo = []
+arvore_minima = []
+vertices_arvore_minima = []
 
 def getMin():
     min = 1000
@@ -28,7 +24,6 @@ def getMin():
                         min = aresta.peso
                         menor_aresta = aresta
                         novo_vertice = aresta.X
-
     return menor_aresta, novo_vertice
 
 
@@ -38,8 +33,10 @@ def haveCycle(aresta : Aresta):
     else:
         return False
 
-def Prim():
-    vertice = randint(1, 3)
+def Prim(arestas, vertices):
+    arestas_grafo.extend(arestas)
+    vertices_grafo.extend(vertices)
+    vertice = randint(1, vertices_grafo.__len__())
     vertices_arvore_minima.append(vertice)
     vertices_grafo.remove(vertice)
 
@@ -51,6 +48,4 @@ def Prim():
         arvore_minima.append(aresta)
         arestas_grafo.remove(aresta)
 
-Prim()
-for x in arvore_minima:
-    print(x.__dict__)
+    return arvore_minima
