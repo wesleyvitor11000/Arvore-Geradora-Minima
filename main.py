@@ -1,6 +1,7 @@
-from Aresta import Aresta
+from Aresta import Aresta;
 from Prim import Prim;
 from kruskalAlgorithm import kruskalAlgorithm;
+from matrizAdjacencia import mostrarMatriz;
 
 def importarArestas(nome):
     arestas = []
@@ -35,7 +36,11 @@ arestas, vertices = importarArestas(nome)
 kruskalAGM = kruskalAlgorithm(arestas)
 primAGM = Prim(arestas, vertices)
 
+
 print('Kruskal:\n')
-print('\n'.join(str(aresta.__dict__) for aresta in kruskalAGM))
+#print('\n'.join(str(aresta.__dict__) for aresta in kruskalAGM))
+mostrarMatriz(kruskalAGM, vertices)
+
 print('\nPrim:\n')
-print('\n'.join(str(aresta.__dict__) for aresta in primAGM))
+#print('\n'.join(str(aresta.__dict__) for aresta in primAGM))
+mostrarMatriz(primAGM, vertices)
