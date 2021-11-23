@@ -12,6 +12,6 @@ arquivo = f"grafos/grafo-incompleto-{lenGrafp}.txt"
 with open(arquivo, 'w') as grafo:
     for i in vertices:
         for j in range(i+1, lenGrafp + 1):
-            if escolhas[randint(0,1)]:
+            if escolhas[randint(0,1)] or i == j-1:
                 grafo.write(f"{i} {j} {randint(1,10)}\n")
             
