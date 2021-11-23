@@ -1,6 +1,7 @@
 from Aresta import Aresta;
 from Prim import Prim;
 from kruskalAlgorithm import kruskalAlgorithm;
+from time import perf_counter_ns
 from matrizAdjacencia import mostrarMatriz;
 
 def importarArestas(nome):
@@ -9,7 +10,6 @@ def importarArestas(nome):
     with open(nome) as arquivo:
         while True:
             line = arquivo.readline()
-            #print(line)
             if line == '':
                 break
             else:
@@ -23,24 +23,25 @@ def importarArestas(nome):
                     vertices.append(x)
                 if y not in vertices:
                     vertices.append(y)
-
-    #print('\n'.join(str(aresta._dict_) for aresta in lista))  
+                      
     return arestas, vertices         
 
 
 
 nome = input('Digite o nome do arquivo: ')
-
 arestas, vertices = importarArestas(nome)
 
+inicio_Kruskal = perf_counter_ns()
 kruskalAGM = kruskalAlgorithm(arestas)
+fim_Kruskal = perf_counter_ns() - inicio_Kruskal
+
+inicio_Prim = perf_counter_ns()
 primAGM = Prim(arestas, vertices)
+fim_Prim = perf_counter_ns() - inicio_Kruskal
 
-
-print('Kruskal:\n')
-#print('\n'.join(str(aresta.__dict__) for aresta in kruskalAGM))
+print(f"Kruskal: demorou {fim_Kruskal} ns \n")
 mostrarMatriz(kruskalAGM, vertices)
-
-print('\nPrim:\n')
-#print('\n'.join(str(aresta.__dict__) for aresta in primAGM))
+#print('\n'.join(str(aresta.__dict__) for aresta in kruskalAGM))
+print(f"\nPrim: demorou {fim_Prim} ns\n")
 mostrarMatriz(primAGM, vertices)
+#print('\n'.join(str(aresta.__dict__) for aresta in primAGM))
