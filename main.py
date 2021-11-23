@@ -1,7 +1,8 @@
-from Aresta import Aresta
+from Aresta import Aresta;
 from Prim import Prim;
 from kruskalAlgorithm import kruskalAlgorithm;
 from time import perf_counter_ns
+from matrizAdjacencia import mostrarMatriz;
 
 #Função que lê um txt e cria um grafo a partir do mesmo
 def importarArestas(nome):
@@ -43,6 +44,8 @@ fim_Prim = perf_counter_ns() - inicio_Kruskal
 
 #imprime tanto o tempo gasto, como a Arvore geradora minima para cada algoritmo
 print(f"Kruskal: demorou {fim_Kruskal} ns \n")
-print('\n'.join(str(aresta.__dict__) for aresta in kruskalAGM))
+mostrarMatriz(kruskalAGM, vertices)
+#print('\n'.join(str(aresta.__dict__) for aresta in kruskalAGM))
 print(f"\nPrim: demorou {fim_Prim} ns\n")
-print('\n'.join(str(aresta.__dict__) for aresta in primAGM))
+mostrarMatriz(primAGM, vertices)
+#print('\n'.join(str(aresta.__dict__) for aresta in primAGM))
