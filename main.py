@@ -45,7 +45,7 @@ fim_Prim = perf_counter_ns() - inicio_Kruskal
 #imprime tanto o tempo gasto, como a Arvore geradora minima para cada algoritmo
 print(f"Kruskal: demorou {fim_Kruskal} ns \n")
 mostrarMatriz(kruskalAGM, vertices)
-#print('\n'.join(str(aresta.__dict__) for aresta in kruskalAGM))
+
 print(f"\nPrim: demorou {fim_Prim} ns\n")
 mostrarMatriz(primAGM, vertices)
-#print('\n'.join(str(aresta.__dict__) for aresta in primAGM))
+
